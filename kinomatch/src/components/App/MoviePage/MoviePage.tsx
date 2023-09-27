@@ -29,10 +29,10 @@ import API_BASE_URL from '../../../utils/config';
 
 // ================ IMPORT JSON ================
 
-// ici j'importe l'objet "genres" qui contient les genres de films et leurs id et le renomme "genresList" pour pouvoir l'utiliser dans le code
-import { genres as genresListFile } from '../../../json/genres.json';
-import { results as providersListFile } from '../../../json/providers.json';
-import { Countries as countriesListFile } from '../../../json/countries.json';
+// ici j'importe l'objet "genres" qui contient les genres de films et leurs id et le renommee "genresList" pour pouvoir l'utiliser dans le code
+import { genres as genresListFile } from '../../../../public/genres.json';
+import { results as providersListFile } from '../../../../public/providers.json';
+import { Countries as countriesListFile } from '../../../../public/countries.json';
 // ================ IMPORT SCSS ================
 import './style.scss';
 
@@ -67,7 +67,7 @@ function MoviePage() {
     fillValue: 0,
   });
 
-  // UseState chargement de pages
+  // UseState chargement de page
   const [isLoading, setIsLoading] = useState(false);
 
   // UseState qui récupère un tableau de films filtrés sans l'id du film affiché en grand
