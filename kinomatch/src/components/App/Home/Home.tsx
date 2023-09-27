@@ -1,5 +1,5 @@
 // ================ IMPORT BIBLIOTHEQUES ================
-import React, { useState, useEffect, useContext, useRef } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Genre, Nationality, ProviderHome } from '../../../utils/interfaces';
