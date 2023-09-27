@@ -28,7 +28,7 @@ export interface UserDataWatched {
   watched: string;
 }
 
-// Interface définissant les propriétés du contexte. Elle contient l'ensemble des propriétés du contexte.
+// Interface définissant les propriétés du contexte. Elle contient l'ensembl des propriétés du contexte.
 export interface AuthContextProps {
   isLoggedIn: boolean;
   setIsLoggedIn: (value: boolean) => void;
