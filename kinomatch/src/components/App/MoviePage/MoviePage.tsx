@@ -1,5 +1,5 @@
 // Importation des librairies et des fichiers nécessaires
-import { Key, useContext, useEffect, useState, useRef } from 'react';
+import { Key, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSpring, animated } from 'react-spring';
 import React from 'react';
