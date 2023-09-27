@@ -38,7 +38,6 @@ import './style.scss';
 
 // Fonction MoviePage permettant d'afficher la page d'un film
 function MoviePage() {
-  const effectRan = useRef(false);
 
   const navigate = useNavigate();
 
@@ -328,7 +327,6 @@ function MoviePage() {
 
   useEffect(() => {
     if (!window.location.search.includes('filmID')) {
-      if (effectRan.current === true) {
         setIsLoading(true);
 
         //*  ON RÉCUÈRE LES PARAMÈTRES DE L'URL POUR AFFICHER LES FILTRES SELECTIONNES PAR L'UTILISATEUR
@@ -531,10 +529,7 @@ function MoviePage() {
             setIsLoading(false);
           });
       }
-      return () => {
-        effectRan.current = true;
-      };
-    }
+      
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentMovieId]);
 
