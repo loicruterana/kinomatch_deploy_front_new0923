@@ -67,7 +67,7 @@ function MoviePage() {
     fillValue: 0,
   });
 
-  // UseState chargement de page
+  // UseState chargement de pages
   const [isLoading, setIsLoading] = useState(false);
 
   // UseState qui récupère un tableau de films filtrés sans l'id du film affiché en grand
