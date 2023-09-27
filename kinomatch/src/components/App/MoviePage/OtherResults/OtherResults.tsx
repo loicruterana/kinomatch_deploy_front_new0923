@@ -140,7 +140,7 @@ function OtherResults(props: OtherResultsModalProps): JSX.Element {
                     onClick={handleClick}
                     aria-label={`Afficher les détails du film : ${movieElem.title}`}
                   >
-                    {/* Afficher l'affiche du film s'il y en a une, sinon une affiche par défaut */}
+                    {/* Afficher l'affiche du fil s'il y en a une, sinon une affiche par défaut */}
                     <div className='otherResults-container--rate'>
                       {' '}
                       {String(movieElem.vote_average * 10).substring(0, 3)}%
