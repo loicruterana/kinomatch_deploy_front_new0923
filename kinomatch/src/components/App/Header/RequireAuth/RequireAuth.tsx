@@ -1,12 +1,9 @@
 // import { useContext } from 'react';
 // import { AuthContext } from '../../../../contexts/AuthContext';
-// import NotConnected from '../../NotConnected/NotConnected';
+import NotConnected from '../../NotConnected/NotConnected';
 import { useUser } from '../../../../hooks/useUser';
 import Loading from '../../Loading/Loading';
-// import { useNavigate } from 'react-router-dom';
-// import { addUserData } from '../../../../contexts/AuthContext';
-// import { RequireAuth } from './RequireAuth/RequireAuth';
-
+import { useNavigate } from 'react-router-dom';
 import { ReactNode } from 'react';
 
 type RequireAuthProps = {
@@ -14,17 +11,20 @@ type RequireAuthProps = {
 };
 
 export const RequireAuth = ({ children }: RequireAuthProps) => {
+  const navigate: (path: string) => void = useNavigate();
   const { data, loading } = useUser();
+  setTimeout(() => {
+    if (loading) {
+      return <Loading />;
+    }
+    if (data?.id === null) {
+      setTimeout(() => {
+        navigate(`/`);
+        // console.log('on est déconnecté');
+      }, 1000);
+      return <NotConnected />;
+    }
+  }, 1000);
 
-  if (loading) {
-    return <Loading />;
-  }
-
-  if (!data?.id) {
-    // Aucun utilisateur n'est connecté, vous pouvez rediriger vers la page de connexion ici
-    // navigate('/login');
-    return null; // Ne rend rien ici car la redirection est en cours
-  }
-
-  return children;
+  return <>{children}</>;
 };

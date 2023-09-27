@@ -66,6 +66,8 @@ export const AuthContext = createContext<AuthContextProps>(
 
 // export de la fonction AuthProvider qui prend en argument les enfants du composant.
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+
+
   // ================ USESTATE ================
 
   const [userData, setUserData] = useState<UserData>({
@@ -112,23 +114,23 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       });
   };
 
- // Fonction permettant de se déconnecter
- const logout = (): void => {
-  axios
-    .get(`${API_BASE_URL}/login/${userData.id}`)
-    .then((response) => {
-      if (response.data.authorized === false) {
-        // lorsque l'utilisateur se déconnecte, on supprime les données de l'utilisateur
-        clearUserData();
-        setIsLoggedIn(false);
-        // localStorage.setItem('isLoggedIn', 'false');
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-      // Gérer les erreurs si nécessaire
-    });
-};
+  // Fonction permettant de se déconnecter
+  const logout = (): void => {
+    axios
+      .get(`${API_BASE_URL}/login/${userData.id}`)
+      .then((response) => {
+        if (response.data.authorized === false) {
+          // lorsque l'utilisateur se déconnecte, on supprime les données de l'utilisateur
+          clearUserData();
+          setIsLoggedIn(false);
+          // localStorage.setItem('isLoggedIn', 'false');
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        // Gérer les erreurs si nécessaire
+      });
+  };
 
   //  ================ FONCTIONS LIÉES AUX UTILISATEURS ================
 
@@ -187,6 +189,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   // UseEffect permettant de poster les données des "favorites" de l'utilisateur
   useEffect(() => {
+
+
     const postData = async (): Promise<void> => {
       try {
         await axios.post(`${API_BASE_URL}/favoritesMovies`, userData);
@@ -222,11 +226,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       }
     };
 
-    // Si on se trouve sur la page profile alors on n'exécute pas la fonction
-    if (window.location.pathname === '/profile') {
-      return;
-      // Si "isFavoritesModified" n'a pas été modifié et que userData.favorites n'est pas vide, alors on supprime les données puis on met à jour les "useData"
-    } else if (userData.favorites !== '' && !isFavoritesModified) {
+    // Si on se trouve sur la page profile et que userData.favorites n'est pas vide, alors on ne supprime pas les données
+    if (userData.favorites !== '' && !isFavoritesModified) {
       deleteData();
       setUserData({ ...userData, favorites: '' });
     }
@@ -257,6 +258,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   // UseEffect permettant de poster les données des "toWatch" de l'utilisateur
   useEffect(() => {
+
     const postData = async (): Promise<void> => {
       try {
         await axios.post(`${API_BASE_URL}/toWatchMovies`, userDataToWatch);
