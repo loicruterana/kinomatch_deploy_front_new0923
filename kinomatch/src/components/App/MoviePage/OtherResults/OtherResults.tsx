@@ -129,6 +129,7 @@ function OtherResults(props: OtherResultsModalProps): JSX.Element {
           scrollableTarget='scrollableDiv'
           scrollThreshold={0.8}
         >
+          {movieArray.length > 0 ? (
           <div className='otherResults-container--scrollList'>
             {/* Pour chaque élément du tableau de films, afficher un bouton avec l'affiche et le titre */}
             {movieArray?.map(
@@ -163,6 +164,9 @@ function OtherResults(props: OtherResultsModalProps): JSX.Element {
               )
             )}
           </div>
+          ) : (
+            <p className='otherResults-container--scrollList' style= 'none'></p>
+          )}
         </InfiniteScroll>
       </section>
     </aside>
