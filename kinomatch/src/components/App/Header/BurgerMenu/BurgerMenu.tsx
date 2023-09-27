@@ -166,7 +166,7 @@ const BurgerMenu: React.FC<Props> = ({
               setQuery={setQuery}
               handleSubmit={handleSubmit}
             />
-            {!authContext?.isLoggedIn && (
+            {!authContext?..userData.id && (
               <>
                 <Link to='/login' key='login'>
                   <button
