@@ -112,21 +112,23 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       });
   };
 
-  // Fonction permettant de se déconnecter
-  const logout = (): void => {
-    axios
-      .get(`${API_BASE_URL}/login/${userData.id}`)
-      .then((response) => {
-        if (response.data.authorized === false) {
-          setIsLoggedIn(false);
-          // localStorage.setItem('isLoggedIn', 'false');
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        // Gérer les erreurs si nécessaire
-      });
-  };
+ // Fonction permettant de se déconnecter
+ const logout = (): void => {
+  axios
+    .get(`${API_BASE_URL}/login/${userData.id}`)
+    .then((response) => {
+      if (response.data.authorized === false) {
+        // lorsque l'utilisateur se déconnecte, on supprime les données de l'utilisateur
+        clearUserData();
+        setIsLoggedIn(false);
+        // localStorage.setItem('isLoggedIn', 'false');
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      // Gérer les erreurs si nécessaire
+    });
+};
 
   //  ================ FONCTIONS LIÉES AUX UTILISATEURS ================
 
