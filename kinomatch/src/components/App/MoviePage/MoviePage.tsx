@@ -30,9 +30,9 @@ import API_BASE_URL from '../../../utils/config';
 // ================ IMPORT JSON ================
 
 // ici j'importe l'objet "genres" qui contient les genres de films et leurs id et le renommee "genresList" pour pouvoir l'utiliser dans le code
-import { genres as genresListFile } from '../../../../public/json/genres.json';
-import { results as providersListFile } from '../../../../public/json/providers.json';
-import { Countries as countriesListFile } from '../../../../public/json/countries.json';
+import { genres as genresListFile } from '../../../json/genres.json';
+import { results as providersListFile } from '../../../json/providers.json';
+import { Countries as countriesListFile } from '../../../json/countries.json';
 // ================ IMPORT SCSS ================
 import './style.scss';
 
